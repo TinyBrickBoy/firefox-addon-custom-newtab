@@ -1,0 +1,92 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  release:
+    types: [published]
+
+env:
+  WEB_EXT_IGNORE: --ignore-files ".github/**" "dist/**" "README.md"
+
+jobs:
+  # ─── Lint ───────────────────────────────────────────────────────────────────
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install web-ext
+        run: npm install -g web-ext
+
+      - name: Validate add-on
+        run: web-ext lint --source-dir . ${{ env.WEB_EXT_IGNORE }}
+
+  # ─── Release (only when a GitHub release is published) ──────────────────────
+  release:
+    name: Publish to AMO
+    runs-on: ubuntu-latest
+    needs: lint
+    if: github.event_name == 'release'
+    permissions:
+      contents: write
+    env:
+      AMO_API_KEY: ${{ secrets.AMO_API_KEY }}
+      AMO_API_SECRET: ${{ secrets.AMO_API_SECRET }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install web-ext
+        run: npm install -g web-ext
+
+      - name: Check tag against manifest version
+        run: |
+          VERSION=$(node -p "require('./manifest.json').version")
+          TAG="${GITHUB_REF_NAME#v}"
+          if [ "$VERSION" != "$TAG" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match version $VERSION in manifest.json"
+            exit 1
+          fi
+
+      - name: Check AMO secrets
+        run: |
+          if [ -z "$AMO_API_KEY" ] || [ -z "$AMO_API_SECRET" ]; then
+            echo "::error::Secrets AMO_API_KEY and AMO_API_SECRET are missing (Settings → Secrets and variables → Actions)"
+            exit 1
+          fi
+
+      # Uploads the new version to addons.mozilla.org. Once Mozilla approves it,
+      # every existing user gets the update automatically through Firefox.
+      - name: Submit to AMO
+        run: |
+          web-ext sign \
+            --source-dir . \
+            --artifacts-dir ./dist \
+            ${{ env.WEB_EXT_IGNORE }} \
+            --channel listed \
+            --api-key "$AMO_API_KEY" \
+            --api-secret "$AMO_API_SECRET" \
+            --approval-timeout 0
+
+      - name: Build add-on
+        run: |
+          web-ext build \
+            --source-dir . \
+            --artifacts-dir ./dist \
+            ${{ env.WEB_EXT_IGNORE }} \
+            --overwrite-dest
+
+      - name: Attach build to the release
+        run: gh release upload "$GITHUB_REF_NAME" dist/*.zip --clobber
