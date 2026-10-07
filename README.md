@@ -1,4 +1,4 @@
-[![Install](https://img.shields.io/badge/Install-Firefox_Addon-FF7139?style=for-the-badge&logo=firefox)](https://addons.mozilla.org/firefox/addon/custom-new-tab-url/)
+[![Install](https://img.shields.io/badge/Install-Firefox_Addon-FF7139?style=for-the-badge&logo=firefox)](https://addons.mozilla.org/firefox/addon/url-new-tab/)
 
 # Custom New Tab URL
 
