@@ -33,25 +33,6 @@ when you save.
 Only `http://` and `https://` URLs are supported. Firefox does not let add-ons
 open `about:` or `file:` pages.
 
-## Development
-
-```sh
-npx web-ext run    # start Firefox with the add-on loaded
-npx web-ext lint   # validate
-```
-
-## Releases
-
-Publishing a GitHub release submits the version to addons.mozilla.org through
-[`.github/workflows/main.yml`](.github/workflows/main.yml) and attaches the built
-`.zip` to the release.
-
-1. Bump `version` in `manifest.json`.
-2. Create a release with the tag `1.2.3` or `v1.2.3`, matching that version.
-
-The repository needs the secrets `AMO_API_KEY` and `AMO_API_SECRET`
-(created at [addons.mozilla.org/developers/addon/api/key](https://addons.mozilla.org/developers/addon/api/key/)).
-
 ## License
 
 [MIT](LICENSE)
