@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title data-i18n="extensionName"></title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 14px/1.5 system-ui, sans-serif; margin: 12px; }
+    label.title { display: block; font-weight: 600; margin-bottom: 4px; }
+    .row { display: flex; gap: 8px; }
+    input[type="text"] { flex: 1; font: inherit; padding: 4px 6px; min-width: 0; }
+    button { font: inherit; padding: 4px 12px; }
+    fieldset { border: 0; padding: 0; margin: 12px 0 0; }
+    fieldset label { display: block; margin: 4px 0; }
+    .sub { display: block; margin-left: 22px; opacity: 0.75; font-size: 13px; }
+    #status { min-height: 1.5em; margin-top: 8px; }
+    #status.error { color: #d70022; }
+    p.note { opacity: 0.75; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <form id="form">
+    <label class="title" for="url" data-i18n="urlLabel"></label>
+    <div class="row">
+      <input id="url" type="text" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+      <button type="submit" data-i18n="save"></button>
+    </div>
+
+    <fieldset>
+      <label>
+        <input type="radio" name="mode" value="embed">
+        <span data-i18n="modeEmbed"></span>
+        <span class="sub" data-i18n="modeEmbedHint"></span>
+      </label>
+      <label>
+        <input type="radio" name="mode" value="redirect">
+        <span data-i18n="modeRedirect"></span>
+        <span class="sub" data-i18n="modeRedirectHint"></span>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <label>
+        <input type="checkbox" name="focusPage">
+        <span data-i18n="focusPage"></span>
+        <span class="sub" data-i18n="focusPageHint"></span>
+      </label>
+    </fieldset>
+
+    <div id="status" role="status"></div>
+  </form>
+  <p class="note" data-i18n="noteSelectInPreferences"></p>
+  <script src="settings.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

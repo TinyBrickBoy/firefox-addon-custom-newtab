@@ -1,0 +1,66 @@
+{
+  "extensionName": {
+    "message": "Eigene Neuer-Tab-URL"
+  },
+  "extensionDescription": {
+    "message": "Öffnet in neuen Tabs eine beliebige Website, die Adressleiste bleibt frei zum Suchen."
+  },
+  "newTabTitle": {
+    "message": "Neuer Tab"
+  },
+  "hintNoUrl": {
+    "message": "Es ist noch keine URL für neue Tabs eingestellt."
+  },
+  "hintCannotOpen": {
+    "message": "„$URL$“ kann nicht geöffnet werden: $ERROR$",
+    "placeholders": {
+      "url": { "content": "$1" },
+      "error": { "content": "$2" }
+    }
+  },
+  "openOptions": {
+    "message": "Einstellungen öffnen"
+  },
+  "urlLabel": {
+    "message": "URL für neue Tabs"
+  },
+  "save": {
+    "message": "Speichern"
+  },
+  "modeEmbed": {
+    "message": "Einbetten"
+  },
+  "modeEmbedHint": {
+    "message": "Die Adressleiste bleibt leer, du kannst direkt suchen."
+  },
+  "modeRedirect": {
+    "message": "Weiterleiten"
+  },
+  "modeRedirectHint": {
+    "message": "Falls die Seite eingebettet nicht richtig funktioniert (z. B. fehlender Login)."
+  },
+  "focusPage": {
+    "message": "Seite statt Adressleiste fokussieren"
+  },
+  "focusPageHint": {
+    "message": "Firefox setzt den Cursor bei neuen Tabs sonst in die Adressleiste."
+  },
+  "noteSelectInPreferences": {
+    "message": "In den Firefox-Einstellungen unter Startseite → Neue Tabs muss „Eigene Neuer-Tab-URL“ ausgewählt sein. Nur http://- und https://-Seiten werden unterstützt."
+  },
+  "saved": {
+    "message": "Gespeichert."
+  },
+  "removed": {
+    "message": "URL entfernt."
+  },
+  "errorInvalidUrl": {
+    "message": "Ungültige URL."
+  },
+  "errorScheme": {
+    "message": "Nur http:// und https:// werden unterstützt."
+  },
+  "errorPermission": {
+    "message": "Zum Einbetten wird die Berechtigung für diese Seite benötigt."
+  }
+}

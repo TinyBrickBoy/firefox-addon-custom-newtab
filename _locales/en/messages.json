@@ -1,0 +1,86 @@
+{
+  "extensionName": {
+    "message": "Custom New Tab URL",
+    "description": "Name of the extension. Also shown under Settings → Home → New tabs."
+  },
+  "extensionDescription": {
+    "message": "Open any website in new tabs and keep the address bar free for searching.",
+    "description": "Description of the extension shown in the add-on manager."
+  },
+  "newTabTitle": {
+    "message": "New Tab",
+    "description": "Title of the new tab page."
+  },
+  "hintNoUrl": {
+    "message": "No URL for new tabs has been set yet.",
+    "description": "Shown on the new tab page while no URL is configured."
+  },
+  "hintCannotOpen": {
+    "message": "Cannot open “$URL$”: $ERROR$",
+    "description": "Shown on the new tab page when the URL cannot be opened.",
+    "placeholders": {
+      "url": { "content": "$1" },
+      "error": { "content": "$2" }
+    }
+  },
+  "openOptions": {
+    "message": "Open settings",
+    "description": "Button on the new tab page that opens the options."
+  },
+  "urlLabel": {
+    "message": "URL for new tabs",
+    "description": "Label of the URL field in the options."
+  },
+  "save": {
+    "message": "Save",
+    "description": "Save button in the options."
+  },
+  "modeEmbed": {
+    "message": "Embed",
+    "description": "Option: show the website inside the new tab page."
+  },
+  "modeEmbedHint": {
+    "message": "The address bar stays empty, so you can search right away.",
+    "description": "Explanation of the embed option."
+  },
+  "modeRedirect": {
+    "message": "Redirect",
+    "description": "Option: navigate the new tab to the website."
+  },
+  "modeRedirectHint": {
+    "message": "Use this if the site does not work embedded (e.g. you are not signed in).",
+    "description": "Explanation of the redirect option."
+  },
+  "focusPage": {
+    "message": "Focus the page instead of the address bar",
+    "description": "Checkbox in the options."
+  },
+  "focusPageHint": {
+    "message": "Firefox normally puts the cursor into the address bar of new tabs.",
+    "description": "Explanation of the focus checkbox."
+  },
+  "noteSelectInPreferences": {
+    "message": "In the Firefox settings under Home → New tabs, “Custom New Tab URL” must be selected. Only http:// and https:// pages are supported.",
+    "description": "Note at the bottom of the options."
+  },
+  "saved": {
+    "message": "Saved.",
+    "description": "Status after saving."
+  },
+  "removed": {
+    "message": "URL removed.",
+    "description": "Status after saving an empty URL."
+  },
+  "errorInvalidUrl": {
+    "message": "Invalid URL.",
+    "description": "Error when the entered URL cannot be parsed."
+  },
+  "errorScheme": {
+    "message": "Only http:// and https:// are supported.",
+    "description": "Error for URLs like about: or file:."
+  },
+  "errorPermission": {
+    "message": "Embedding needs permission for this site.",
+    "description": "Error when the host permission was declined."
+  }
+}
