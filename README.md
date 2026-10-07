@@ -12,6 +12,16 @@ in the Firefox settings under **Home → New tabs**.
 - **Redirect mode** as a fallback for sites that do not work embedded.
 - English and German.
 
+## Need a start page?
+
+Try [**Startpage**](https://github.com/TinyBrickBoy/startpage), a minimal,
+customizable start page with clock, weather, smart search, bookmarks, news feeds
+and notes. It is a single HTML file with no build step or dependencies. Set
+<https://tinybrickboy.github.io/startpage> as your new tab URL and it opens in
+every new tab.
+
+[![Startpage](https://raw.githubusercontent.com/TinyBrickBoy/startpage/main/screenshots/dark.png)](https://github.com/TinyBrickBoy/startpage)
+
 ## Usage
 
 1. Install the add-on.
