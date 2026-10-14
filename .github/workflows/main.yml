@@ -51,14 +51,21 @@ jobs:
       - name: Install web-ext
         run: npm install -g web-ext
 
-      - name: Check tag against manifest version
+      # The release tag decides the version, so manifest.json need not be bumped by hand.
+      - name: Set manifest version from tag
         run: |
-          VERSION=$(node -p "require('./manifest.json').version")
-          TAG="${GITHUB_REF_NAME#v}"
-          if [ "$VERSION" != "$TAG" ]; then
-            echo "::error::Tag $GITHUB_REF_NAME does not match version $VERSION in manifest.json"
+          VERSION="${GITHUB_REF_NAME#v}"
+          if ! [[ "$VERSION" =~ ^[0-9]+(\.[0-9]+){0,3}$ ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME is not a valid add-on version (e.g. 1.2 or v1.2.3)"
             exit 1
           fi
+          VERSION="$VERSION" node -e '
+            const fs = require("fs");
+            const manifest = JSON.parse(fs.readFileSync("manifest.json", "utf8"));
+            manifest.version = process.env.VERSION;
+            fs.writeFileSync("manifest.json", JSON.stringify(manifest, null, 2) + "\n");
+          '
+          echo "Version set to $VERSION"
 
       - name: Check AMO secrets
         run: |
